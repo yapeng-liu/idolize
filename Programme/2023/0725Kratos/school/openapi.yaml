@@ -1,0 +1,285 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: School API
+    version: 0.0.1
+paths:
+    /circle/v1/circle/task_create:
+        post:
+            tags:
+                - School
+            description: 管理员创建任务
+            operationId: School_TaskCreate
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.school.v1.TaskCreateReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.school.v1.TaskCreateReply'
+    /circle/v1/circle/task_delete:
+        delete:
+            tags:
+                - School
+            description: 管理员删除任务
+            operationId: School_TaskDelete
+            parameters:
+                - name: taskManageId
+                  in: query
+                  schema:
+                    type: integer
+                    format: int64
+                - name: serverId
+                  in: query
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.school.v1.TaskDeleteReply'
+    /circle/v1/circle/task_list:
+        get:
+            tags:
+                - School
+            description: 用户获取任务列表
+            operationId: School_TaskUserList
+            parameters:
+                - name: serverId
+                  in: query
+                  schema:
+                    type: integer
+                    format: int64
+                - name: userId
+                  in: query
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.school.v1.TaskUserListReply'
+    /circle/v1/circle/task_manage:
+        get:
+            tags:
+                - School
+            description: 管理员获取任务列表
+            operationId: School_TaskManageList
+            parameters:
+                - name: serverId
+                  in: query
+                  schema:
+                    type: integer
+                    format: int64
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.school.v1.TaskManageListReply'
+    /circle/v1/circle/task_modify:
+        put:
+            tags:
+                - School
+            description: 管理员修改任务
+            operationId: School_TaskModify
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.school.v1.TaskModifyReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.school.v1.TaskModifyReply'
+    /circle/v1/circle/task_status_set:
+        put:
+            tags:
+                - School
+            description: 管理员修改任务启用状态
+            operationId: School_TaskStatusSet
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.school.v1.TaskStatusSetReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.school.v1.TaskStatusSetReply'
+components:
+    schemas:
+        api.school.v1.TaskCreateReply:
+            type: object
+            properties:
+                taskManageId:
+                    type: integer
+                    format: int64
+        api.school.v1.TaskCreateReq:
+            type: object
+            properties:
+                serverId:
+                    type: integer
+                    format: int64
+                taskType:
+                    type: integer
+                    format: enum
+                repeat:
+                    type: string
+                startTime:
+                    type: string
+                endTime:
+                    type: string
+                participants:
+                    type: string
+                triggerEvent:
+                    type: string
+                totalCount:
+                    type: integer
+                    format: int32
+                name:
+                    type: string
+                description:
+                    type: string
+                score:
+                    type: integer
+                    format: int32
+                taskCondition:
+                    type: integer
+                    format: int32
+        api.school.v1.TaskDeleteReply:
+            type: object
+            properties: {}
+        api.school.v1.TaskManage:
+            type: object
+            properties:
+                taskType:
+                    type: integer
+                    format: enum
+                name:
+                    type: string
+                description:
+                    type: string
+                score:
+                    type: integer
+                    format: int32
+                taskCondition:
+                    type: integer
+                    format: int32
+        api.school.v1.TaskManageListReply:
+            type: object
+            properties:
+                taskManageList:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/api.school.v1.TaskManage'
+        api.school.v1.TaskModifyReply:
+            type: object
+            properties: {}
+        api.school.v1.TaskModifyReq:
+            type: object
+            properties:
+                taskManageId:
+                    type: integer
+                    format: int64
+                taskType:
+                    type: integer
+                    format: enum
+                repeat:
+                    type: string
+                startTime:
+                    type: string
+                endTime:
+                    type: string
+                participants:
+                    type: string
+                triggerEvent:
+                    type: string
+                totalCount:
+                    type: integer
+                    format: int32
+                name:
+                    type: string
+                description:
+                    type: string
+                score:
+                    type: integer
+                    format: int32
+                taskCondition:
+                    type: integer
+                    format: int32
+        api.school.v1.TaskStatusSetReply:
+            type: object
+            properties: {}
+        api.school.v1.TaskStatusSetReq:
+            type: object
+            properties:
+                taskManageId:
+                    type: integer
+                    format: int64
+                serverId:
+                    type: integer
+                    format: int64
+                taskStatus:
+                    type: integer
+                    format: int32
+        api.school.v1.TaskUser:
+            type: object
+            properties:
+                taskType:
+                    type: integer
+                    format: enum
+                name:
+                    type: string
+                description:
+                    type: string
+                score:
+                    type: integer
+                    format: int32
+                status:
+                    type: integer
+                    format: int32
+                completedCount:
+                    type: integer
+                    format: int32
+                totalCount:
+                    type: integer
+                    format: int32
+                taskConditionTime:
+                    type: integer
+                    format: int64
+        api.school.v1.TaskUserListReply:
+            type: object
+            properties:
+                score:
+                    type: integer
+                    format: int32
+                taskUserList:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/api.school.v1.TaskUser'
+tags:
+    - name: School

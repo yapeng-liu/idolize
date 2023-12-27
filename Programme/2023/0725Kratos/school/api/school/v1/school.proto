@@ -1,0 +1,262 @@
+syntax = "proto3";
+
+package api.school.v1;
+import "google/api/annotations.proto";
+
+option go_package = "school/api/school/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.school.v1";
+
+service School {
+	// 用户获取任务列表
+	rpc TaskUserList (TaskUserListReq) returns (TaskUserListReply) {
+		option (google.api.http) = {
+			get: "/circle/v1/circle/task_user_list"
+		};
+	}
+
+	// 管理员获取任务列表
+	rpc TaskManageList (TaskManageListReq) returns (TaskManageListReply) {
+		option (google.api.http) = {
+			get: "/circle/v1/circle/task_manage"
+		};
+	}
+
+ 	// 管理员创建任务
+	rpc TaskCreate (TaskCreateReq) returns (TaskCreateReply) {
+		option (google.api.http) = {
+			post: "/circle/v1/circle/task_create"
+			body: "*"
+		};
+	}
+
+	//管理员删除任务
+	rpc TaskDelete (TaskDeleteReq) returns (TaskDeleteReply) {
+		option (google.api.http) = {
+			delete: "/circle/v1/circle/task_delete"
+		};
+	}
+
+	//管理员修改任务
+	rpc TaskModify (TaskModifyReq) returns (TaskModifyReply) {
+		option (google.api.http) = {
+			put: "/circle/v1/circle/task_modify"
+			body: "*"
+		};
+	}
+
+	//管理员修改任务启用状态
+	rpc TaskStatusSet (TaskStatusSetReq) returns (TaskStatusSetReply) {
+		option (google.api.http) = {
+			put: "/circle/v1/circle/task_status_set"
+			body: "*"
+		};
+	}
+	//使用
+
+	// 管理员获取任务列表
+	rpc GetServerTaskList (ServerTaskListReq) returns (ServerTaskListReply) {
+		option (google.api.http) = {
+			get: "/circle/v1/task/server_task_list"
+		};
+	}
+
+	// 管理员创建任务
+	rpc ServerTaskCreate (ServerTaskCreateReq) returns (ServerTaskCreateReply) {
+		option (google.api.http) = {
+			post: "/circle/v1/task/server_task_create"
+			body: "*"
+		};
+	}
+
+	//管理员删除任务
+	rpc ServerTaskDelete (ServerTaskDeleteReq) returns (EmptyReply) {
+		option (google.api.http) = {
+			delete: "/circle/v1/task/server_task_delete"
+		};
+	}
+
+	//管理员修改任务
+	rpc ServerTaskModify (ServerTaskModifyReq) returns (EmptyReply) {
+		option (google.api.http) = {
+			put: "/circle/v1/task/server_task_modify"
+			body: "*"
+		};
+	}
+
+	//管理员修改任务启用状态
+	rpc ServerTaskStatusSet (ServerTaskStatusSetReq) returns (EmptyReply) {
+		option (google.api.http) = {
+			put: "/circle/v1/task/server_task_status_set"
+			body: "*"
+		};
+	}
+}
+
+enum TaskType {
+	TASK_DAILY 					= 0; //日常任务
+	TASK_DEVELOPMENTAL 	= 1; //成长任务
+	TASK_TIME_LIMITED 	= 2; //限时任务
+}
+
+message TaskUserListReq {
+	int64 server_id = 1;
+	int64 user_id = 2;
+}
+
+message TaskUser {
+	TaskType task_type				 = 1;
+	string name 							 = 2;
+	string description 				 = 3;
+	int32  score            	 = 4;
+	int32  status							 = 5;
+	int32  completed_count  	 = 6;
+	int32  total_count      	 = 7;
+	int64  task_condition_time = 8;
+}
+
+message TaskUserListReply {
+	int32 score =1;
+	repeated TaskUser taskUserList=2;
+}
+
+message TaskManageListReq {
+	int64 server_id = 1;
+}
+
+message TaskManage {
+	TaskType task_type			= 1;
+	string name 						= 2;
+	string description 			= 3;
+	int32  score            = 4;
+	int32  task_condition		= 5;
+}
+
+message TaskManageListReply {
+	repeated TaskManage taskManageList=1;
+}
+
+
+message TaskCreateReq {
+	int64     server_id 			= 1;
+	TaskType  task_type				= 2;
+	string    repeat 					=	3;
+	string 		start_time 			=	4;
+	string 		end_time 				=	5;
+	string 		participants 		=	6;
+	string 		trigger_event 	=	7;
+	int32     total_count  		= 8;
+	string 		name 						= 9;
+	string 		description 		= 10;
+	int32  		score       		= 11;
+	int32  		task_condition	= 12;
+}
+
+message TaskCreateReply {
+	int64 task_manage_id = 1;
+}
+
+message TaskDeleteReq {
+	int64 task_manage_id 	= 1;
+	int64 server_id = 2;
+}
+
+message TaskDeleteReply {
+}
+
+message TaskModifyReq {
+	int64 		task_manage_id 			= 1;
+	TaskType  task_type						= 2;
+	string    repeat 							=	3;
+	string 		start_time 					=	4;
+	string 		end_time 						=	5;
+	string 		participants 				=	6;
+	string 		trigger_event 			=	7;
+	int32     total_count  				= 8;
+	string 		name 								= 9;
+	string 		description 				= 10;
+	int32  		score       				= 11;
+	int32  		task_condition			= 12;
+}
+
+message TaskModifyReply {
+}
+
+message TaskStatusSetReq {
+	int64 task_manage_id = 1;
+	int64 server_id 		= 2;
+	int32 task_status = 3;
+}
+
+message TaskStatusSetReply {
+}
+
+//使用
+// 管理员获取任务列表
+message ServerTaskListReq {
+	int64 server_id = 1;
+}
+
+message ServerTask {
+	string task_type			  = 1;
+	string name 						= 2;
+	string description 			= 3;
+	int64  score            = 4;
+	int32  task_condition		= 5;
+}
+
+message ServerTaskListReply {
+	repeated ServerTask server_task_list=1;
+}
+
+// 管理员创建任务
+message ServerTaskCreateReq {
+	int64     server_id 			= 1;
+	string    task_type				= 2;
+	string    repeat 					=	3;
+	int64 		start_time 			=	4;
+	int64 		end_time 				=	5;
+	string 		participants 		=	6;
+	string 		trigger_event 	=	7;
+	int32     total_count  		= 8;
+	string 		name 						= 9;
+	string 		description 		= 10;
+	int64  		score       		= 11;
+	int32  		task_condition	= 12;
+}
+
+message ServerTaskCreateReply {
+	int64 server_task_id = 1;
+}
+
+//管理员删除任务
+message ServerTaskDeleteReq {
+	int64 server_task_id 	= 1;
+	int64 server_id = 2;
+}
+
+//管理员修改任务
+message ServerTaskModifyReq {
+	int64 		id 			            = 1;
+	string    task_type						= 2;
+	string    repeat 							=	3;
+	int64 		start_time 					=	4;
+	int64 		end_time 						=	5;
+	string 		participants 				=	6;
+	string 		trigger_event 			=	7;
+	int32     total_count  				= 8;
+	string 		name 								= 9;
+	string 		description 				= 10;
+	int64  		score       				= 11;
+	int32  		task_condition			= 12;
+}
+
+//管理员修改任务启用状态
+message ServerTaskStatusSetReq {
+	int64 server_task_id = 1;
+	int64 server_id = 2;
+	int32 task_condition = 3;
+}
+
+message EmptyReply {
+}
