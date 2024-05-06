@@ -13,3 +13,4 @@
    * ssh-keygen -t rsa
 *  设置远程服务器密钥验证：
    * scp ~/.ssh/id_rsa.pub user@remote.server.com:~/.ssh/authorized_keys
+   * scp ~/.ssh/id_rsa.pub root@159.75.92.101:~/.ssh/authorized_keys
