@@ -1,6 +1,6 @@
 # mangodb
 
-[![CN doc](https://img.shields.io/badge/文档-中文版-blue.svg)](mangodb.md)
+[![CN doc](https://img.shields.io/badge/文档-中文版-blue.svg)](mongo)
 
 - [组件说明](#组件说明)
 - [备份](#备份)
