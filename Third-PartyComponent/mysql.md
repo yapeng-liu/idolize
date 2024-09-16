@@ -1,4 +1,4 @@
-# mysql
+# mysql[..](..%2F..)
 
 [![CN doc](https://img.shields.io/badge/文档-中文版-blue.svg)](mysql.md)
 
@@ -24,6 +24,9 @@
     * 如果where条件只包括 状态索引字段，查询效率有明显提升
     * 如果where条件包括 状态索引字段+非索引字段 状态值的数据量较少时 ，查询效率有提升
     * 如果where条件包括 状态索引字段+非索引字段 状态值的数据量较多时 ，查询效率会降低
+### 查看索引
+* show index from tableName;
+
 
 
 

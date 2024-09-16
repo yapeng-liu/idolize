@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"database/sql"
-	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -93,12 +92,39 @@ type ActivityTag struct {
 	BindActivityCount int64  `gorm:"column:bind_activity_count"`
 }
 
+type ActivityTagPo struct {
+	Id                uint
+	Tag               string
+	Des               string
+	BindActivityCount int64
+}
+
+func ActivityTagToPo(tag *ActivityTag) *ActivityTagPo {
+	return &ActivityTagPo{
+		Id:                tag.ID,
+		Tag:               tag.Tag,
+		Des:               tag.Des,
+		BindActivityCount: tag.BindActivityCount,
+	}
+}
+
+type ChannelMembers struct {
+	gorm.Model
+	UserId      int64 `gorm:"comment:用户id"`
+	ChannelId   int64 `gorm:"comment:频道id"`
+	ServerId    int64 `gorm:"comment:服务器id"`
+	IsJoined    bool  `gorm:"comment:是否已加入"`
+	IsRobot     int8  `gorm:"comment:0用户1签到机器人2问答机器人"`
+	OpeningTime int64 `gorm:"comment:打开群聊时间"`
+}
+
 func (ActivityTag) TableName() string {
 	return "activity_tag"
 }
 
 func mysqlInit(ctx context.Context) (*gorm.DB, error) {
-	db, err := gorm.Open(mysql.Open("root:123456@tcp(192.168.1.61:3306)/gamping?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{
+	db, err := gorm.Open(mysql.Open("root:123456@tcp(127.0.0.1:3306)/gamping?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{
+		//db, err := gorm.Open(mysql.Open("root:123456@tcp(192.168.1.61:3306)/gamping?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{
 		//db, err := gorm.Open(mysql.Open("root:9bWVj.9jSD@tcp(42.194.237.166:30001)/gamping?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{
 		//Logger: func() logger.Interface {
 		//	return logger.New(
@@ -164,12 +190,38 @@ func mysqlOptions(ctx context.Context, connect *gorm.DB) error {
 	//}
 	//
 	//fmt.Println(len(list))
-
-	if err := connect.Model(&ActivityTag{}).Where("id in ?", []int64{5, 6}).Update("bind_activity_count", gorm.Expr("bind_activity_count + ?", 1)).Error; err != nil {
-		fmt.Println("aaa", err)
-		return err
-	}
-
+	//var result *ActivityTag
+	//err := connect.Model(&ActivityTag{}).Where("id = ?", 100).First(&result).Error
+	//if err != nil {
+	//	if errors.Is(err, gorm.ErrRecordNotFound) {
+	//		if ActivityTagToPo(result) == nil {
+	//			fmt.Println("1", ActivityTagToPo(result).Id)
+	//		} else {
+	//			fmt.Println("2", ActivityTagToPo(result).Id)
+	//		}
+	//	} else {
+	//		fmt.Println("aaa", err)
+	//		return err
+	//	}
+	//}
+	//var channelMembers []*ChannelMembers
+	//for j := int64(0); j < 7; j++ {
+	//	for i := int64(0); i < 35000; i++ {
+	//		channelMembers = append(channelMembers, &ChannelMembers{
+	//			UserId:    i,
+	//			ChannelId: j,
+	//			ServerId:  j,
+	//			IsJoined:  true,
+	//			IsRobot:   0,
+	//		})
+	//	}
+	//}
+	//now := time.Now()
+	//err := connect.CreateInBatches(channelMembers, 2000).Error
+	//if err != nil {
+	//	fmt.Printf("failed create channel members : %v", err)
+	//}
+	//fmt.Println(time.Since(now))
 	return nil
 }
 

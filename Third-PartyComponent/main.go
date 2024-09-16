@@ -1,94 +1,70 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"time"
+	"github.com/redis/go-redis/v9"
+	"go.mongodb.org/mongo-driver/mongo"
+	"golang.org/x/sync/errgroup"
+	"gorm.io/gorm"
 )
 
 func main() {
-	//var (
-	//	ctx = context.Background()
-	//)
+	var (
+		group, ctx   = errgroup.WithContext(context.Background())
+		mysqlConnect *gorm.DB
+		redisConnect *redis.Client
+		mongoConnect *mongo.Client
+		err          error
+	)
 	//mysql
-	//mysqlConnect, err := mysqlInit(ctx)
-	//if err != nil {
-	//	return
-	//}
-	//err = mysqlOptions(ctx, mysqlConnect)
-	//if err != nil {
-	//	return
-	//}
-	////redis
-	//redisConnect, err := redisInit(ctx)
-	//if err != nil {
-	//	return
-	//}
-	//err = redisOptions(ctx, redisConnect)
-	//if err != nil {
-	//	return
-	//}
-	////mongo
-	//mongoConnect, err := mongoInit(ctx)
-	//if err != nil {
-	//	return
-	//}
-	//err = mongoOptions(ctx, mongoConnect)
-	//if err != nil {
-	//	fmt.Println("mongoOptions err:", err)
-	//	return
-	//}
+	group.Go(func() error {
+		mysqlConnect, err = mysqlInit(ctx)
+		if err != nil {
+			return err
+		}
+		return nil
+	})
 
-	type f func() time.Time
-	m, ok := map[int32]f{
-		1: GetNextDay,
-		2: GetNextFirstWeekDay,
-		3: GetNextFirstMonthDay,
-	}[2]
-	if !ok {
-		fmt.Println("4")
+	//redis
+	group.Go(func() error {
+		redisConnect, err = redisInit(ctx)
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+
+	//mongo
+	group.Go(func() error {
+		mongoConnect, err = mongoInit(ctx)
+		if err != nil {
+			fmt.Println("mongoInit err:", err)
+			return err
+		}
+		return nil
+	})
+	err = group.Wait()
+	if err != nil {
+		fmt.Println("group.Wait() err", err)
+		panic(err)
+	}
+	ctx = context.Background()
+	err = redisOptions(ctx, redisConnect)
+	if err != nil {
+		fmt.Println("redisOptions err", err)
 		return
 	}
-	fmt.Println(":")
-	fmt.Println("result:", m())
-	//endTime, ok := map[int32]string{
-	//	1: "1",
-	//	2: "2",
-	//	3: "3",
-	//}[3]
-	//if !ok {
-	//	fmt.Println("4")
-	//	return
-	//}
-	//fmt.Println(endTime)
-}
-
-// GetNextDay 获取明天凌晨的时间
-func GetNextDay() time.Time {
-	fmt.Println("1")
-	deadline := time.Now().AddDate(0, 0, 1)
-	return time.Date(deadline.Year(), deadline.Month(), deadline.Day(), 0, 0, 0, 0, deadline.Location())
-}
-
-// GetNextFirstWeekDay 获取下周一凌晨的时间
-func GetNextFirstWeekDay() time.Time {
-	fmt.Println("2")
-	now := time.Now()
-	weekday := int(now.Weekday())
-	if weekday == 0 {
-		weekday = 7
+	err = mysqlOptions(ctx, mysqlConnect)
+	if err != nil {
+		fmt.Println("mysqlOptions err", err)
+		return
 	}
-
-	deadline := now.AddDate(0, 0, 8-weekday)
-	return time.Date(deadline.Year(), deadline.Month(), deadline.Day(), 0, 0, 0, 0, deadline.Location())
-}
-
-// GetNextFirstMonthDay 获取下月一号凌晨的时间
-func GetNextFirstMonthDay() time.Time {
-	fmt.Println("3")
-	now := time.Now()
-	d := now.Day()
-	deadline := now.AddDate(0, 1, -d+1)
-	return time.Date(deadline.Year(), deadline.Month(), deadline.Day(), 0, 0, 0, 0, deadline.Location())
+	err = mongoOptions(context.Background(), mongoConnect)
+	if err != nil {
+		fmt.Println("mongoOptions err:", err)
+		return
+	}
 }
 
 //ls -d /data/dbbackup/mongo/mongo1-*/ | awk -F "/" ls'{print $5}' | wc -l

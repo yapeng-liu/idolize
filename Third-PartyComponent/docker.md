@@ -6,6 +6,31 @@
 
 ---
 
+### 在centos安装docker
+* 安装所需软件包
+~~~
+    sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+~~~
+* 设置软件源（阿里源）
+~~~
+    sudo yum-config-manager \
+    --add-repo \
+    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+~~~
+* 安装最新
+~~~
+    sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+~~~
+* 启动
+~~~
+    sudo systemctl start docker
+~~~
+
+### 在centos安装docker-compose
+~~~
+  sudo curl -L "https://github.com/docker/compose/releases/download/v2.29.2/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+~~~
+
 ### 组件说明
 * 在一个已经exit的docker容器中修改配置文件
 ~~~
@@ -33,5 +58,9 @@ docker-compose stop worker       // go to hibernate
 docker-compose rm worker        // shutdown the PC 
 docker-compose create worker     // create the container from image and put it in hibernate
 docker-compose start worker //bring container to life from hibernation
-
+~~~
+* 镜像导入、导出
+~~~
+    docker save mysql > ./mysql.tar
+    docker load < ./mysql.tar
 ~~~

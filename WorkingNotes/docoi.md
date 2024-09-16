@@ -9,6 +9,11 @@
 - [2.4.0版本](#240版本)
 - [2.4.1版本](#241版本)
 - [2.5.0版本](#250版本)
+- [2.6.0版本](#260版本)
+- [版本手动处理事项](#版本手动处理事项)
+- [版本优化事项](#版本优化事项)
+- [版本bug及问题排查](#版本bug及问题排查)
+- [版本知识点](#版本知识点)
 ---
 
 ### 1.2.2版本
@@ -76,15 +81,7 @@
         管理后台礼物和商品列表接口
 ~~~
 
-#### 2.优化线上数据库备份方案
 
-* 备份文件压缩 tar -zcvf
-* 降低备份程序IO占用优先级 nice、ionice、cpulimit
-
-#### 3.转移服务器主
-* 1.修改servers表中server所属用户ID
-* 2.查看identity_groups表服务器所有身份组，找出服务器主身份ID
-* 3.修改identity_group_members表，用户ID的最高身份ID为服务器主身份ID
 
 #### 4.用户在线时长分析
 [用户在线时长的统计.docx](%E7%94%A8%E6%88%B7%E5%9C%A8%E7%BA%BF%E6%97%B6%E9%95%BF%E7%9A%84%E7%BB%9F%E8%AE%A1.docx)
@@ -204,10 +201,31 @@ type A = primitive.A
 	}
 ~~~
 
+### 2.6.0版本
+#### 版本开发概要
+~~~
+    个人：
+        mongodb、redis上云
+        消息页签服务器列表（列表返回、服务器拖拽排序）
+~~~
+#### 版本重点功能记录
+* 拖拽排序功能实现方案
+  * 根据拖拽的位置，将当前位置及之后的服务器order排序值加一
+  * 浮点数记录order排序值，每次拖拽取两个位置间的中值，拖拽次数保存值取决于浮点数位数
+
+### 版本手动处理事项
+#### 转移服务器主
+* 1.修改servers表中server所属用户ID
+* 2.查看identity_groups表服务器所有身份组，找出服务器主身份ID
+* 3.修改identity_group_members表，用户ID的最高身份ID为服务器主身份ID
+
+### 版本优化事项
 #### SQL优化
 * 场景
-    获取服务器成员的服务器昵称
+  * 获取服务器成员的服务器昵称
 * 单个查找改为批量查找
+* 注意
+  * 需要判断uIdsCIds参数长度，空数据SQL语句会出错
 ~~~
 	err := r.data.DB(ctx).Where("circle_id = ? and user_id = ?", cid, uid).First(&serverMember).Error
 	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
@@ -221,6 +239,31 @@ type A = primitive.A
 		r.log.Errorf("get circleUserIds(%v) err(%v)", uIdsCIds, err)
 		return nil, err
 	}
-
 ~~~
 
+#### 优化线上数据库备份方案
+* 备份文件压缩 tar -zcvf
+* 降低备份程序IO占用优先级 nice、ionice、cpulimit
+
+
+### 版本bug及问题排查
+#### context canceled问题
+* 报错现象
+~~~
+    Post "http://api-img-sh.fengkongcloud.com/image/v4": context canceled
+~~~
+* 原因(客户端超时断开),需要结合客户端日志查看
+* kratos框架链接异常处理
+~~~
+    当服务端在处理业务的同时，后台有个协程监控链接的状态，如果链接有问题就会把context cancel掉。
+    （cancel的目的就是快速失败——业务不用处理了，就算服务端返回结果了，客户端也不处理了）
+~~~
+
+### 版本知识点
+#### 排序
+* golang内置库
+~~~
+	sort.Slice(Servers, func(i, j int) bool {
+		return Servers[i].Order < Servers[j].Order
+	})
+~~~

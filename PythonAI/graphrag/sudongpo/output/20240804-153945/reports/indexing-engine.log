@@ -1,0 +1,1127 @@
+15:39:45,833 graphrag.config.read_dotenv INFO Loading pipeline .env file
+15:39:45,836 graphrag.index.cli INFO using default configuration: {
+    "llm": {
+        "api_key": "REDACTED, length 51",
+        "type": "openai_chat",
+        "model": "deepseek-chat",
+        "max_tokens": 4000,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "n": 1,
+        "request_timeout": 180.0,
+        "api_base": "https://api.agicto.cn/v1",
+        "api_version": null,
+        "proxy": null,
+        "cognitive_services_endpoint": null,
+        "deployment_name": null,
+        "model_supports_json": false,
+        "tokens_per_minute": 0,
+        "requests_per_minute": 0,
+        "max_retries": 10,
+        "max_retry_wait": 10.0,
+        "sleep_on_rate_limit_recommendation": true,
+        "concurrent_requests": 25
+    },
+    "parallelization": {
+        "stagger": 0.3,
+        "num_threads": 50
+    },
+    "async_mode": "threaded",
+    "root_dir": "./sudongpo",
+    "reporting": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/reports",
+        "storage_account_blob_url": null
+    },
+    "storage": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/artifacts",
+        "storage_account_blob_url": null
+    },
+    "cache": {
+        "type": "file",
+        "base_dir": "cache",
+        "storage_account_blob_url": null
+    },
+    "input": {
+        "type": "file",
+        "file_type": "text",
+        "base_dir": "input",
+        "storage_account_blob_url": null,
+        "encoding": "utf-8",
+        "file_pattern": ".*\\.txt$",
+        "file_filter": null,
+        "source_column": null,
+        "timestamp_column": null,
+        "timestamp_format": null,
+        "text_column": "text",
+        "title_column": null,
+        "document_attribute_columns": []
+    },
+    "embed_graph": {
+        "enabled": false,
+        "num_walks": 10,
+        "walk_length": 40,
+        "window_size": 2,
+        "iterations": 3,
+        "random_seed": 597832,
+        "strategy": null
+    },
+    "embeddings": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_embedding",
+            "model": "text-embedding-3-small",
+            "max_tokens": 4000,
+            "temperature": 0,
+            "top_p": 1,
+            "n": 1,
+            "request_timeout": 180.0,
+            "api_base": "https://api.agicto.cn/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": null,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "batch_size": 16,
+        "batch_max_tokens": 8191,
+        "target": "required",
+        "skip": [],
+        "vector_store": null,
+        "strategy": null
+    },
+    "chunks": {
+        "size": 1200,
+        "overlap": 100,
+        "group_by_columns": [
+            "id"
+        ],
+        "strategy": null
+    },
+    "snapshots": {
+        "graphml": false,
+        "raw_entities": false,
+        "top_level_nodes": false
+    },
+    "entity_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-chat",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "n": 1,
+            "request_timeout": 180.0,
+            "api_base": "https://api.agicto.cn/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/entity_extraction.txt",
+        "entity_types": [
+            "organization",
+            "person",
+            "geo",
+            "event"
+        ],
+        "max_gleanings": 1,
+        "strategy": null
+    },
+    "summarize_descriptions": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-chat",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "n": 1,
+            "request_timeout": 180.0,
+            "api_base": "https://api.agicto.cn/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/summarize_descriptions.txt",
+        "max_length": 500,
+        "strategy": null
+    },
+    "community_reports": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-chat",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "n": 1,
+            "request_timeout": 180.0,
+            "api_base": "https://api.agicto.cn/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/community_report.txt",
+        "max_length": 2000,
+        "max_input_length": 8000,
+        "strategy": null
+    },
+    "claim_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-chat",
+            "max_tokens": 4000,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "n": 1,
+            "request_timeout": 180.0,
+            "api_base": "https://api.agicto.cn/v1",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "enabled": false,
+        "prompt": "prompts/claim_extraction.txt",
+        "description": "Any claims or facts that could be relevant to information discovery.",
+        "max_gleanings": 1,
+        "strategy": null
+    },
+    "cluster_graph": {
+        "max_cluster_size": 10,
+        "strategy": null
+    },
+    "umap": {
+        "enabled": false
+    },
+    "local_search": {
+        "text_unit_prop": 0.5,
+        "community_prop": 0.1,
+        "conversation_history_max_turns": 5,
+        "top_k_entities": 10,
+        "top_k_relationships": 10,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "n": 1,
+        "max_tokens": 12000,
+        "llm_max_tokens": 2000
+    },
+    "global_search": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "n": 1,
+        "max_tokens": 12000,
+        "data_max_tokens": 12000,
+        "map_max_tokens": 1000,
+        "reduce_max_tokens": 2000,
+        "concurrency": 32
+    },
+    "encoding_model": "cl100k_base",
+    "skip_workflows": []
+}
+15:39:45,837 graphrag.index.create_pipeline_config INFO skipping workflows 
+15:39:45,840 graphrag.index.run INFO Running pipeline
+15:39:45,840 graphrag.index.storage.file_pipeline_storage INFO Creating file storage at sudongpo/output/20240804-153945/artifacts
+15:39:45,840 graphrag.index.input.load_input INFO loading input from root_dir=input
+15:39:45,840 graphrag.index.input.load_input INFO using file storage for input
+15:39:45,841 graphrag.index.storage.file_pipeline_storage INFO search sudongpo/input for files matching .*\.txt$
+15:39:45,841 graphrag.index.input.text INFO found text files from input, found [('桃花谷问答.txt', {})]
+15:39:45,843 graphrag.index.input.text INFO Found 1 files, loading 1
+15:39:45,845 graphrag.index.workflows.load INFO Workflow Run Order: ['create_base_text_units', 'create_base_extracted_entities', 'create_summarized_entities', 'create_base_entity_graph', 'create_final_entities', 'create_final_nodes', 'create_final_communities', 'join_text_units_to_entity_ids', 'create_final_relationships', 'join_text_units_to_relationship_ids', 'create_final_community_reports', 'create_final_text_units', 'create_base_documents', 'create_final_documents']
+15:39:45,845 graphrag.index.run INFO Final # of rows loaded: 1
+15:39:45,947 graphrag.index.run INFO Running workflow: create_base_text_units...
+15:39:45,947 graphrag.index.run INFO dependencies for create_base_text_units: []
+15:39:45,951 datashaper.workflow.workflow INFO executing verb orderby
+15:39:45,953 datashaper.workflow.workflow INFO executing verb zip
+15:39:45,955 datashaper.workflow.workflow INFO executing verb aggregate_override
+15:39:45,959 datashaper.workflow.workflow INFO executing verb chunk
+15:39:46,133 datashaper.workflow.workflow INFO executing verb select
+15:39:46,136 datashaper.workflow.workflow INFO executing verb unroll
+15:39:46,140 datashaper.workflow.workflow INFO executing verb rename
+15:39:46,144 datashaper.workflow.workflow INFO executing verb genid
+15:39:46,149 datashaper.workflow.workflow INFO executing verb unzip
+15:39:46,153 datashaper.workflow.workflow INFO executing verb copy
+15:39:46,157 datashaper.workflow.workflow INFO executing verb filter
+15:39:46,165 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_text_units.parquet
+15:39:46,288 graphrag.index.run INFO Running workflow: create_base_extracted_entities...
+15:39:46,288 graphrag.index.run INFO dependencies for create_base_extracted_entities: ['create_base_text_units']
+15:39:46,288 graphrag.index.run INFO read table from storage: create_base_text_units.parquet
+15:39:46,300 datashaper.workflow.workflow INFO executing verb entity_extract
+15:39:46,305 graphrag.llm.openai.create_openai_client INFO Creating OpenAI client base_url=https://api.agicto.cn/v1
+15:39:46,310 graphrag.index.llm.load_llm INFO create TPM/RPM limiter for deepseek-chat: TPM=0, RPM=0
+15:39:46,310 graphrag.index.llm.load_llm INFO create concurrency limiter for deepseek-chat: 25
+15:40:05,75 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:05,77 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 18.730999999912456. input_tokens=3134, output_tokens=430
+15:40:05,789 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:05,790 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 19.442000000039116. input_tokens=3135, output_tokens=337
+15:40:06,574 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:06,575 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 20.184000000008382. input_tokens=3135, output_tokens=436
+15:40:10,186 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:10,187 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 23.79100000008475. input_tokens=3134, output_tokens=424
+15:40:10,490 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:10,491 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 24.127000000094995. input_tokens=3135, output_tokens=586
+15:40:11,705 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:11,706 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 25.337000000057742. input_tokens=3134, output_tokens=449
+15:40:11,797 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:11,798 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 25.42299999995157. input_tokens=3135, output_tokens=475
+15:40:15,639 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:15,640 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 29.288999999989755. input_tokens=3134, output_tokens=546
+15:40:17,833 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:17,834 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 31.45100000000093. input_tokens=3135, output_tokens=774
+15:40:19,581 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:19,582 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.243999999947846. input_tokens=3135, output_tokens=635
+15:40:20,302 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:20,303 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.94900000002235. input_tokens=3136, output_tokens=613
+15:40:20,624 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:20,625 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 34.24699999997392. input_tokens=3135, output_tokens=617
+15:40:21,614 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:21,615 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 35.22999999998137. input_tokens=3135, output_tokens=847
+15:40:22,355 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:22,356 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 36.01300000003539. input_tokens=3135, output_tokens=677
+15:40:25,35 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:25,36 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 38.64199999999255. input_tokens=3135, output_tokens=1043
+15:40:25,177 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:25,178 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 20.101000000024214. input_tokens=3134, output_tokens=531
+15:40:26,772 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:26,773 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 40.4330000000773. input_tokens=3134, output_tokens=742
+15:40:26,878 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:26,879 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 15.080000000074506. input_tokens=3134, output_tokens=290
+15:40:26,977 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:26,978 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 40.65000000002328. input_tokens=3135, output_tokens=1056
+15:40:27,143 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:27,144 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 40.771999999997206. input_tokens=3134, output_tokens=762
+15:40:28,336 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:28,337 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 42.00199999997858. input_tokens=3135, output_tokens=814
+15:40:29,618 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:29,619 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 43.25199999997858. input_tokens=3136, output_tokens=881
+15:40:36,280 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:36,281 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 49.92399999999907. input_tokens=3136, output_tokens=978
+15:40:36,711 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:36,713 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 50.34999999997672. input_tokens=3136, output_tokens=991
+15:40:36,765 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:36,766 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 30.974000000045635. input_tokens=3134, output_tokens=630
+15:40:39,437 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:39,438 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 19.133999999961816. input_tokens=3135, output_tokens=483
+15:40:41,761 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:41,762 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 23.927999999956228. input_tokens=3134, output_tokens=462
+15:40:43,740 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:43,741 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.25. input_tokens=3136, output_tokens=644
+15:40:43,960 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:43,961 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 57.60200000007171. input_tokens=3135, output_tokens=1101
+15:40:44,892 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:44,893 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.18599999998696. input_tokens=3134, output_tokens=869
+15:40:47,655 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:47,656 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 26.040999999968335. input_tokens=3134, output_tokens=548
+15:40:47,703 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:47,704 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 61.322999999974854. input_tokens=3134, output_tokens=1221
+15:40:49,871 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:49,872 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 22.993000000016764. input_tokens=3134, output_tokens=481
+15:40:50,455 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:50,456 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 20.837000000057742. input_tokens=3134, output_tokens=415
+15:40:52,426 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:52,427 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 25.652000000001863. input_tokens=3135, output_tokens=502
+15:40:53,162 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:53,163 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 16.396999999997206. input_tokens=3135, output_tokens=321
+15:40:54,29 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:54,30 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 28.852000000071712. input_tokens=3134, output_tokens=587
+15:40:54,786 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:54,788 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 68.39899999997579. input_tokens=3135, output_tokens=1283
+15:40:55,688 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:55,689 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 49.11199999996461. input_tokens=3134, output_tokens=1300
+15:40:59,219 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:40:59,220 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 43.57900000002701. input_tokens=3135, output_tokens=861
+15:41:00,734 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:00,735 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 40.10899999993853. input_tokens=3134, output_tokens=801
+15:41:00,983 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:00,984 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 38.6260000000475. input_tokens=3135, output_tokens=1037
+15:41:01,705 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:01,706 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 36.67000000004191. input_tokens=3135, output_tokens=1025
+15:41:02,299 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:02,300 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 35.15399999998044. input_tokens=3134, output_tokens=732
+15:41:02,563 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:02,563 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 26.28200000000652. input_tokens=3134, output_tokens=559
+15:41:05,560 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:05,561 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 17.856999999959953. input_tokens=3134, output_tokens=350
+15:41:05,881 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:05,882 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 22.139999999897555. input_tokens=3135, output_tokens=581
+15:41:06,448 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:06,449 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 39.47100000001956. input_tokens=3134, output_tokens=765
+15:41:11,321 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:11,322 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 23.66600000008475. input_tokens=3134, output_tokens=438
+15:41:11,664 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:11,665 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 52.082000000053085. input_tokens=3135, output_tokens=1088
+15:41:18,169 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:18,170 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 49.832000000053085. input_tokens=3135, output_tokens=1038
+15:41:18,774 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:18,775 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.881999999983236. input_tokens=3134, output_tokens=767
+15:41:20,424 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:20,425 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 36.46400000003632. input_tokens=3134, output_tokens=728
+15:41:21,547 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:21,548 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 20.81200000003446. input_tokens=3135, output_tokens=407
+15:41:22,237 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:22,238 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 32.36499999999069. input_tokens=3135, output_tokens=643
+15:41:22,972 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:22,973 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 32.51600000006147. input_tokens=3135, output_tokens=655
+15:41:27,330 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:27,331 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 47.89300000004005. input_tokens=3134, output_tokens=922
+15:41:27,373 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:27,374 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 26.39000000001397. input_tokens=3135, output_tokens=556
+15:41:29,662 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:29,663 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 24.101999999955297. input_tokens=3134, output_tokens=635
+15:41:33,221 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:33,222 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 38.4330000000773. input_tokens=3135, output_tokens=765
+15:41:33,627 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:33,628 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 56.91500000003725. input_tokens=3134, output_tokens=1253
+15:41:35,67 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:35,68 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 39.37899999995716. input_tokens=3133, output_tokens=1113
+15:41:35,485 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:35,486 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 85.29700000002049. input_tokens=3134, output_tokens=1719
+15:41:35,551 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:35,552 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.84600000001956. input_tokens=3135, output_tokens=704
+15:41:35,749 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:35,750 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 29.30099999997765. input_tokens=3135, output_tokens=573
+15:41:35,918 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:35,919 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 33.35499999998137. input_tokens=3135, output_tokens=647
+15:41:36,428 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:36,429 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 30.54700000002049. input_tokens=3133, output_tokens=616
+15:41:41,889 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:41,891 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 19.652999999932945. input_tokens=3132, output_tokens=512
+15:41:42,701 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:42,701 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 23.925000000046566. input_tokens=3135, output_tokens=608
+15:41:44,367 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:44,368 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 21.39399999997113. input_tokens=2226, output_tokens=417
+15:41:44,510 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:44,511 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 32.84499999997206. input_tokens=3133, output_tokens=664
+15:41:44,792 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:44,793 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 26.622999999905005. input_tokens=3135, output_tokens=714
+15:41:44,983 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:44,984 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 52.55699999991339. input_tokens=3135, output_tokens=1399
+15:41:45,973 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:45,974 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 64.21100000001024. input_tokens=3135, output_tokens=1612
+15:41:48,834 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:48,835 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 55.67099999997299. input_tokens=3134, output_tokens=1157
+15:41:49,358 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:49,359 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 55.32799999997951. input_tokens=3135, output_tokens=1037
+15:41:51,10 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:51,11 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 39.68899999989662. input_tokens=3134, output_tokens=745
+15:41:52,19 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:41:52,20 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 30.472000000067055. input_tokens=3134, output_tokens=746
+15:42:00,265 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:00,267 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 61.04599999997299. input_tokens=3134, output_tokens=1527
+15:42:07,278 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:07,279 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 64.97899999993388. input_tokens=3135, output_tokens=1358
+15:42:10,547 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:10,548 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "Process" with 0 retries took 50.122999999905005. input_tokens=3134, output_tokens=1388
+15:42:10,560 datashaper.workflow.workflow INFO executing verb merge_graphs
+15:42:10,645 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_extracted_entities.parquet
+15:42:10,768 graphrag.index.run INFO Running workflow: create_summarized_entities...
+15:42:10,769 graphrag.index.run INFO dependencies for create_summarized_entities: ['create_base_extracted_entities']
+15:42:10,769 graphrag.index.run INFO read table from storage: create_base_extracted_entities.parquet
+15:42:10,781 datashaper.workflow.workflow INFO executing verb summarize_descriptions
+15:42:14,766 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:14,767 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.9259999999776483. input_tokens=149, output_tokens=24
+15:42:14,936 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:14,937 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.0670000000391155. input_tokens=272, output_tokens=43
+15:42:15,400 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:15,401 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.5579999999608845. input_tokens=194, output_tokens=79
+15:42:15,727 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:15,728 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.864000000059605. input_tokens=270, output_tokens=74
+15:42:16,344 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:16,344 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.508000000030734. input_tokens=186, output_tokens=45
+15:42:16,566 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:16,567 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.708000000100583. input_tokens=184, output_tokens=51
+15:42:16,908 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:16,909 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.070999999996275. input_tokens=225, output_tokens=119
+15:42:17,40 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,41 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.184000000008382. input_tokens=345, output_tokens=104
+15:42:17,57 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,58 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.197999999974854. input_tokens=175, output_tokens=101
+15:42:17,78 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,78 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.140999999945052. input_tokens=159, output_tokens=42
+15:42:17,83 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,83 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.236000000033528. input_tokens=188, output_tokens=60
+15:42:17,112 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,113 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.261000000056811. input_tokens=176, output_tokens=47
+15:42:17,161 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,161 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.315999999991618. input_tokens=205, output_tokens=58
+15:42:17,551 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,551 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.699999999953434. input_tokens=190, output_tokens=71
+15:42:17,973 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:17,974 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.098000000114553. input_tokens=286, output_tokens=70
+15:42:18,441 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:18,442 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.574000000022352. input_tokens=327, output_tokens=157
+15:42:18,589 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:18,590 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.750999999931082. input_tokens=273, output_tokens=161
+15:42:18,663 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:18,664 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.2630000000353903. input_tokens=164, output_tokens=32
+15:42:19,874 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:19,875 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.761999999987893. input_tokens=237, output_tokens=54
+15:42:20,207 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:20,208 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.376000000047497. input_tokens=399, output_tokens=140
+15:42:20,285 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:20,286 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.435999999986961. input_tokens=497, output_tokens=245
+15:42:20,369 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:20,370 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.2079999999841675. input_tokens=264, output_tokens=68
+15:42:20,902 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:20,903 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.047999999951571. input_tokens=229, output_tokens=117
+15:42:21,158 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:21,159 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.285000000032596. input_tokens=441, output_tokens=263
+15:42:21,379 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:21,380 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.652000000001863. input_tokens=252, output_tokens=139
+15:42:21,514 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:21,515 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.457000000053085. input_tokens=179, output_tokens=57
+15:42:21,757 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:21,758 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.190999999991618. input_tokens=397, output_tokens=143
+15:42:22,671 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:22,672 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.84299999999348. input_tokens=545, output_tokens=164
+15:42:22,973 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:22,974 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.112000000081025. input_tokens=300, output_tokens=155
+15:42:23,18 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:23,19 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.146999999997206. input_tokens=468, output_tokens=312
+15:42:23,222 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:23,223 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.2489999999525025. input_tokens=212, output_tokens=72
+15:42:23,867 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:23,868 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.6600000000325963. input_tokens=226, output_tokens=99
+15:42:23,925 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:23,926 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.0230000000447035. input_tokens=240, output_tokens=33
+15:42:23,939 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:23,939 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.594000000040978. input_tokens=237, output_tokens=100
+15:42:24,157 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:24,158 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.787999999942258. input_tokens=159, output_tokens=29
+15:42:24,224 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:24,225 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.141999999992549. input_tokens=533, output_tokens=212
+15:42:24,242 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:24,243 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 13.37699999997858. input_tokens=693, output_tokens=169
+15:42:24,457 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:24,457 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.547999999951571. input_tokens=263, output_tokens=96
+15:42:24,779 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:24,779 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.1890000000130385. input_tokens=246, output_tokens=77
+15:42:24,874 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:24,875 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.4329999999608845. input_tokens=236, output_tokens=88
+15:42:24,888 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:24,888 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.01300000003539. input_tokens=224, output_tokens=77
+15:42:25,215 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:25,216 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.449000000022352. input_tokens=251, output_tokens=154
+15:42:26,158 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:26,158 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4859999999171123. input_tokens=173, output_tokens=37
+15:42:26,257 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:26,257 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.971000000019558. input_tokens=445, output_tokens=155
+15:42:26,279 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:26,280 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.76500000001397. input_tokens=347, output_tokens=136
+15:42:26,922 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:26,923 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.371999999973923. input_tokens=426, output_tokens=138
+15:42:27,121 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:27,122 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.741999999969266. input_tokens=386, output_tokens=91
+15:42:27,134 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:27,134 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.265999999945052. input_tokens=176, output_tokens=39
+15:42:27,301 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:27,301 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.3610000000335276. input_tokens=362, output_tokens=78
+15:42:27,401 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:27,401 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.6429999999236315. input_tokens=303, output_tokens=70
+15:42:27,855 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:27,855 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.6300000000046566. input_tokens=380, output_tokens=86
+15:42:28,542 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:28,542 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.616000000038184. input_tokens=390, output_tokens=120
+15:42:28,648 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:28,649 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.425999999977648. input_tokens=398, output_tokens=150
+15:42:28,804 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:28,805 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.830999999889173. input_tokens=234, output_tokens=90
+15:42:28,875 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:28,875 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 11.795999999972992. input_tokens=262, output_tokens=160
+15:42:28,981 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:28,982 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 10.317999999970198. input_tokens=795, output_tokens=308
+15:42:29,159 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:29,160 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.002000000094995. input_tokens=160, output_tokens=33
+15:42:29,168 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:29,169 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.7110000000102445. input_tokens=309, output_tokens=70
+15:42:29,516 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:29,516 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.4959999999264255. input_tokens=180, output_tokens=80
+15:42:29,831 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:29,831 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.4290000000037253. input_tokens=149, output_tokens=29
+15:42:29,882 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:29,882 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.724000000045635. input_tokens=473, output_tokens=151
+15:42:29,943 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:29,944 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.165000000037253. input_tokens=209, output_tokens=60
+15:42:30,25 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:30,26 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.809999999939464. input_tokens=180, output_tokens=74
+15:42:30,50 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:30,51 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.1949999999487773. input_tokens=152, output_tokens=22
+15:42:30,60 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:30,60 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.1359999999403954. input_tokens=208, output_tokens=79
+15:42:30,249 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:30,250 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.089999999967404. input_tokens=329, output_tokens=135
+15:42:30,472 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:30,473 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.214999999967404. input_tokens=177, output_tokens=89
+15:42:30,688 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:30,688 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.799999999930151. input_tokens=195, output_tokens=86
+15:42:31,86 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:31,87 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 14.045999999972992. input_tokens=503, output_tokens=201
+15:42:31,89 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:31,90 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.956000000005588. input_tokens=245, output_tokens=49
+15:42:31,479 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:31,480 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.177999999956228. input_tokens=267, output_tokens=48
+15:42:31,629 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:31,630 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.349999999976717. input_tokens=293, output_tokens=72
+15:42:31,672 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:31,672 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.797000000020489. input_tokens=274, output_tokens=107
+15:42:32,144 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:32,145 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.2010000000009313. input_tokens=162, output_tokens=26
+15:42:32,371 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:32,372 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.496000000042841. input_tokens=297, output_tokens=90
+15:42:32,682 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:32,683 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.4320000000298023. input_tokens=262, output_tokens=44
+15:42:32,781 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:32,782 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.239000000059605. input_tokens=201, output_tokens=59
+15:42:32,921 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:32,921 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.7519999999785796. input_tokens=194, output_tokens=44
+15:42:33,85 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:33,85 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.924999999930151. input_tokens=328, output_tokens=120
+15:42:33,429 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:33,429 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.307000000029802. input_tokens=429, output_tokens=83
+15:42:33,543 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:33,543 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.853999999933876. input_tokens=337, output_tokens=65
+15:42:33,792 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:33,793 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.3199999999487773. input_tokens=320, output_tokens=87
+15:42:33,938 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:33,939 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.290000000037253. input_tokens=196, output_tokens=120
+15:42:34,7 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:34,8 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.176000000094064. input_tokens=214, output_tokens=62
+15:42:34,793 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:34,793 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.766999999992549. input_tokens=305, output_tokens=63
+15:42:35,26 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:35,27 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.940000000060536. input_tokens=292, output_tokens=50
+15:42:35,68 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:35,69 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.697000000043772. input_tokens=164, output_tokens=32
+15:42:35,208 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:35,209 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.4040000000968575. input_tokens=183, output_tokens=87
+15:42:35,217 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:35,218 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.128000000026077. input_tokens=426, output_tokens=100
+15:42:36,139 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:36,140 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.0540000000037253. input_tokens=173, output_tokens=36
+15:42:36,205 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:36,206 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.1450000000186265. input_tokens=309, output_tokens=129
+15:42:36,258 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:36,259 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.2079999999841675. input_tokens=216, output_tokens=86
+15:42:36,492 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:36,493 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.974999999976717. input_tokens=344, output_tokens=96
+15:42:36,548 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:36,549 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 25.714999999967404. input_tokens=1204, output_tokens=374
+15:42:36,760 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:36,761 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 12.517999999923632. input_tokens=844, output_tokens=380
+15:42:37,483 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:37,484 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.853999999933876. input_tokens=294, output_tokens=66
+15:42:37,495 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:37,496 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.488000000012107. input_tokens=173, output_tokens=45
+15:42:37,802 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:37,803 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.7339999999385327. input_tokens=212, output_tokens=55
+15:42:37,964 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:37,965 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.042999999946915. input_tokens=201, output_tokens=62
+15:42:37,986 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:37,987 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.005000000004657. input_tokens=223, output_tokens=89
+15:42:38,57 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:38,57 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.627000000094995. input_tokens=248, output_tokens=117
+15:42:38,100 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:38,101 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.621000000042841. input_tokens=360, output_tokens=119
+15:42:38,174 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:38,175 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.236000000033528. input_tokens=192, output_tokens=57
+15:42:38,368 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:38,369 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.824999999953434. input_tokens=221, output_tokens=65
+15:42:38,402 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:38,403 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.257999999914318. input_tokens=200, output_tokens=87
+15:42:38,647 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:38,648 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.975000000093132. input_tokens=211, output_tokens=96
+15:42:38,830 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:38,830 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.5709999999962747. input_tokens=162, output_tokens=30
+15:42:39,151 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:39,152 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.358000000007451. input_tokens=198, output_tokens=89
+15:42:40,22 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:40,23 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.8170000000391155. input_tokens=197, output_tokens=55
+15:42:40,139 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:40,140 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.646999999997206. input_tokens=182, output_tokens=76
+15:42:40,265 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:40,266 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 2.462999999988824. input_tokens=152, output_tokens=23
+15:42:40,310 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:40,311 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.170999999972992. input_tokens=186, output_tokens=104
+15:42:41,50 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,51 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.290000000037253. input_tokens=182, output_tokens=90
+15:42:41,107 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,108 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.315000000060536. input_tokens=187, output_tokens=98
+15:42:41,388 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,389 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.606999999959953. input_tokens=244, output_tokens=270
+15:42:41,473 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,473 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.9769999999552965. input_tokens=350, output_tokens=77
+15:42:41,476 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,476 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.449000000022352. input_tokens=382, output_tokens=95
+15:42:41,490 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,491 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.2730000000447035. input_tokens=383, output_tokens=158
+15:42:41,665 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,665 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4899999999906868. input_tokens=256, output_tokens=75
+15:42:41,678 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,678 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.5769999999320135. input_tokens=382, output_tokens=71
+15:42:41,739 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,740 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.0919999999459833. input_tokens=227, output_tokens=71
+15:42:41,770 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:41,770 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.4010000000707805. input_tokens=267, output_tokens=70
+15:42:42,360 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:42,361 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 9.678000000072643. input_tokens=322, output_tokens=129
+15:42:42,420 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:42,421 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.937000000034459. input_tokens=259, output_tokens=62
+15:42:42,610 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:42,611 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 6.062000000034459. input_tokens=208, output_tokens=75
+15:42:43,399 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:43,400 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.190999999991618. input_tokens=439, output_tokens=108
+15:42:43,784 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:43,785 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.7980000000679865. input_tokens=303, output_tokens=82
+15:42:43,861 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:43,861 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 13.978000000002794. input_tokens=330, output_tokens=206
+15:42:43,898 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:43,899 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.934000000008382. input_tokens=282, output_tokens=80
+15:42:44,333 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:44,334 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 3.2830000000540167. input_tokens=249, output_tokens=44
+15:42:44,562 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:44,563 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.422999999951571. input_tokens=458, output_tokens=114
+15:42:44,823 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:44,824 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.672000000020489. input_tokens=331, output_tokens=148
+15:42:45,284 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:45,285 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.974000000045635. input_tokens=227, output_tokens=69
+15:42:45,480 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:45,481 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 4.092000000062399. input_tokens=198, output_tokens=53
+15:42:45,791 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:45,792 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.5260000000707805. input_tokens=289, output_tokens=88
+15:42:45,848 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:45,849 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.018000000040047. input_tokens=259, output_tokens=92
+15:42:46,457 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:46,458 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 5.349999999976717. input_tokens=220, output_tokens=84
+15:42:46,784 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:46,785 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.727000000071712. input_tokens=220, output_tokens=85
+15:42:47,304 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:47,305 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.281999999890104. input_tokens=229, output_tokens=113
+15:42:47,317 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:47,318 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.915000000037253. input_tokens=417, output_tokens=161
+15:42:48,547 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:48,548 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 7.070999999996275. input_tokens=352, output_tokens=115
+15:42:50,96 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:42:50,97 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "summarize" with 0 retries took 8.622999999905005. input_tokens=231, output_tokens=113
+15:42:50,129 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_summarized_entities.parquet
+15:42:50,255 graphrag.index.run INFO Running workflow: create_base_entity_graph...
+15:42:50,255 graphrag.index.run INFO dependencies for create_base_entity_graph: ['create_summarized_entities']
+15:42:50,255 graphrag.index.run INFO read table from storage: create_summarized_entities.parquet
+15:42:50,268 datashaper.workflow.workflow INFO executing verb cluster_graph
+15:42:50,458 datashaper.workflow.workflow INFO executing verb select
+15:42:50,460 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_entity_graph.parquet
+15:42:50,595 graphrag.index.run INFO Running workflow: create_final_entities...
+15:42:50,595 graphrag.index.run INFO dependencies for create_final_entities: ['create_base_entity_graph']
+15:42:50,595 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+15:42:50,613 datashaper.workflow.workflow INFO executing verb unpack_graph
+15:42:50,691 datashaper.workflow.workflow INFO executing verb rename
+15:42:50,697 datashaper.workflow.workflow INFO executing verb select
+15:42:50,704 datashaper.workflow.workflow INFO executing verb dedupe
+15:42:50,711 datashaper.workflow.workflow INFO executing verb rename
+15:42:50,718 datashaper.workflow.workflow INFO executing verb filter
+15:42:50,746 datashaper.workflow.workflow INFO executing verb text_split
+15:42:50,760 datashaper.workflow.workflow INFO executing verb drop
+15:42:50,768 datashaper.workflow.workflow INFO executing verb merge
+15:42:50,881 datashaper.workflow.workflow INFO executing verb text_embed
+15:42:50,882 graphrag.llm.openai.create_openai_client INFO Creating OpenAI client base_url=https://api.agicto.cn/v1
+15:42:50,886 graphrag.index.llm.load_llm INFO create TPM/RPM limiter for text-embedding-3-small: TPM=0, RPM=0
+15:42:50,886 graphrag.index.llm.load_llm INFO create concurrency limiter for text-embedding-3-small: 25
+15:42:50,913 graphrag.index.verbs.text.embed.strategies.openai INFO embedding 666 inputs via 666 snippets using 42 batches. max_batch_size=16, max_tokens=8191
+15:43:26,329 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:26,881 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 35.947999999974854. input_tokens=669, output_tokens=0
+15:43:29,445 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:30,79 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 39.14300000004005. input_tokens=776, output_tokens=0
+15:43:34,52 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:34,586 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 43.65600000007544. input_tokens=807, output_tokens=0
+15:43:35,835 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:36,87 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:37,200 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 46.273999999975786. input_tokens=530, output_tokens=0
+15:43:37,904 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 46.976000000024214. input_tokens=403, output_tokens=0
+15:43:38,822 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:39,408 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 48.4769999999553. input_tokens=699, output_tokens=0
+15:43:41,32 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:41,795 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:42,601 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 51.663999999989755. input_tokens=344, output_tokens=0
+15:43:43,380 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 52.4429999999702. input_tokens=644, output_tokens=0
+15:43:47,41 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:48,59 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 57.125. input_tokens=510, output_tokens=0
+15:43:54,795 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:55,52 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 64.13000000000466. input_tokens=1669, output_tokens=0
+15:43:55,561 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:43:56,15 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 65.0920000000624. input_tokens=940, output_tokens=0
+15:43:58,463 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:01,249 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:02,249 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 71.31400000001304. input_tokens=680, output_tokens=0
+15:44:02,871 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:03,828 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:03,849 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:04,301 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:04,547 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 73.62800000002608. input_tokens=811, output_tokens=0
+15:44:07,813 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 76.89199999999255. input_tokens=428, output_tokens=0
+15:44:08,159 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 77.2280000000028. input_tokens=613, output_tokens=0
+15:44:08,247 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 33.652999999932945. input_tokens=361, output_tokens=0
+15:44:08,494 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 77.57600000000093. input_tokens=942, output_tokens=0
+15:44:10,235 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:11,825 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:13,151 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:14,109 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 83.17999999993481. input_tokens=1155, output_tokens=0
+15:44:14,694 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 83.76800000004005. input_tokens=743, output_tokens=0
+15:44:15,750 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:16,182 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 85.25800000003073. input_tokens=1181, output_tokens=0
+15:44:16,938 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:17,397 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 86.46400000003632. input_tokens=467, output_tokens=0
+15:44:20,615 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 89.69499999994878. input_tokens=869, output_tokens=0
+15:44:20,694 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:23,177 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:23,647 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:24,751 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 45.33499999996275. input_tokens=408, output_tokens=0
+15:44:26,54 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:28,546 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:29,648 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 98.71100000001024. input_tokens=756, output_tokens=0
+15:44:29,683 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:29,864 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:30,658 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 53.449999999953434. input_tokens=546, output_tokens=0
+15:44:31,92 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:31,295 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:31,550 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 61.46300000010524. input_tokens=669, output_tokens=0
+15:44:32,903 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:33,126 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 66.23799999989569. input_tokens=640, output_tokens=0
+15:44:33,320 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 55.4079999999376. input_tokens=790, output_tokens=0
+15:44:34,754 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 26.25199999997858. input_tokens=393, output_tokens=0
+15:44:35,462 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 104.52999999991152. input_tokens=387, output_tokens=0
+15:44:35,589 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 104.66399999998976. input_tokens=1358, output_tokens=0
+15:44:35,684 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 104.75600000005215. input_tokens=758, output_tokens=0
+15:44:36,353 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:37,321 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 54.71200000005774. input_tokens=455, output_tokens=0
+15:44:38,47 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:40,674 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 52.60699999995995. input_tokens=479, output_tokens=0
+15:44:41,101 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:42,124 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 46.1009999999078. input_tokens=391, output_tokens=0
+15:44:42,363 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:42,391 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:44,607 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:45,290 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 61.902999999932945. input_tokens=329, output_tokens=0
+15:44:46,965 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 51.90500000002794. input_tokens=615, output_tokens=0
+15:44:47,690 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 39.86799999990035. input_tokens=524, output_tokens=0
+15:44:47,698 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:48,34 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:49,426 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 47.17000000004191. input_tokens=342, output_tokens=0
+15:44:50,947 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 46.39300000004005. input_tokens=298, output_tokens=0
+15:44:52,20 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:52,344 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/embeddings "HTTP/1.1 200 OK"
+15:44:54,763 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 46.59600000001956. input_tokens=506, output_tokens=0
+15:44:55,24 graphrag.llm.base.rate_limiting_llm INFO perf - llm.embedding "Process" with 0 retries took 46.76899999997113. input_tokens=723, output_tokens=0
+15:44:55,50 datashaper.workflow.workflow INFO executing verb drop
+15:44:55,59 datashaper.workflow.workflow INFO executing verb filter
+15:44:55,76 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_entities.parquet
+15:44:55,282 graphrag.index.run INFO Running workflow: create_final_nodes...
+15:44:55,283 graphrag.index.run INFO dependencies for create_final_nodes: ['create_base_entity_graph']
+15:44:55,283 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+15:44:55,306 datashaper.workflow.workflow INFO executing verb layout_graph
+15:44:55,694 datashaper.workflow.workflow INFO executing verb unpack_graph
+15:44:55,912 datashaper.workflow.workflow INFO executing verb unpack_graph
+15:44:56,6 datashaper.workflow.workflow INFO executing verb drop
+15:44:56,16 datashaper.workflow.workflow INFO executing verb filter
+15:44:56,54 datashaper.workflow.workflow INFO executing verb select
+15:44:56,64 datashaper.workflow.workflow INFO executing verb rename
+15:44:56,74 datashaper.workflow.workflow INFO executing verb convert
+15:44:56,107 datashaper.workflow.workflow INFO executing verb join
+15:44:56,124 datashaper.workflow.workflow INFO executing verb rename
+15:44:56,180 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_nodes.parquet
+15:44:56,327 graphrag.index.run INFO Running workflow: create_final_communities...
+15:44:56,327 graphrag.index.run INFO dependencies for create_final_communities: ['create_base_entity_graph']
+15:44:56,327 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+15:44:56,355 datashaper.workflow.workflow INFO executing verb unpack_graph
+15:44:56,439 datashaper.workflow.workflow INFO executing verb unpack_graph
+15:44:56,642 datashaper.workflow.workflow INFO executing verb aggregate_override
+15:44:56,656 datashaper.workflow.workflow INFO executing verb join
+15:44:56,675 datashaper.workflow.workflow INFO executing verb join
+15:44:56,694 datashaper.workflow.workflow INFO executing verb concat
+15:44:56,707 datashaper.workflow.workflow INFO executing verb filter
+15:44:56,848 datashaper.workflow.workflow INFO executing verb aggregate_override
+15:44:56,868 datashaper.workflow.workflow INFO executing verb join
+15:44:56,884 datashaper.workflow.workflow INFO executing verb filter
+15:44:56,926 datashaper.workflow.workflow INFO executing verb fill
+15:44:56,940 datashaper.workflow.workflow INFO executing verb merge
+15:44:56,964 datashaper.workflow.workflow INFO executing verb copy
+15:44:56,977 datashaper.workflow.workflow INFO executing verb select
+15:44:56,979 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_communities.parquet
+15:44:57,125 graphrag.index.run INFO Running workflow: join_text_units_to_entity_ids...
+15:44:57,125 graphrag.index.run INFO dependencies for join_text_units_to_entity_ids: ['create_final_entities']
+15:44:57,126 graphrag.index.run INFO read table from storage: create_final_entities.parquet
+15:44:57,172 datashaper.workflow.workflow INFO executing verb select
+15:44:57,187 datashaper.workflow.workflow INFO executing verb unroll
+15:44:57,203 datashaper.workflow.workflow INFO executing verb aggregate_override
+15:44:57,212 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table join_text_units_to_entity_ids.parquet
+15:44:57,362 graphrag.index.run INFO Running workflow: create_final_relationships...
+15:44:57,362 graphrag.index.run INFO dependencies for create_final_relationships: ['create_final_nodes', 'create_base_entity_graph']
+15:44:57,362 graphrag.index.run INFO read table from storage: create_final_nodes.parquet
+15:44:57,366 graphrag.index.run INFO read table from storage: create_base_entity_graph.parquet
+15:44:57,401 datashaper.workflow.workflow INFO executing verb unpack_graph
+15:44:57,491 datashaper.workflow.workflow INFO executing verb filter
+15:44:57,539 datashaper.workflow.workflow INFO executing verb rename
+15:44:57,555 datashaper.workflow.workflow INFO executing verb filter
+15:44:57,602 datashaper.workflow.workflow INFO executing verb drop
+15:44:57,619 datashaper.workflow.workflow INFO executing verb compute_edge_combined_degree
+15:44:57,640 datashaper.workflow.workflow INFO executing verb convert
+15:44:57,673 datashaper.workflow.workflow INFO executing verb convert
+15:44:57,675 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_relationships.parquet
+15:44:57,833 graphrag.index.run INFO Running workflow: join_text_units_to_relationship_ids...
+15:44:57,833 graphrag.index.run INFO dependencies for join_text_units_to_relationship_ids: ['create_final_relationships']
+15:44:57,833 graphrag.index.run INFO read table from storage: create_final_relationships.parquet
+15:44:57,870 datashaper.workflow.workflow INFO executing verb select
+15:44:57,887 datashaper.workflow.workflow INFO executing verb unroll
+15:44:57,906 datashaper.workflow.workflow INFO executing verb aggregate_override
+15:44:57,928 datashaper.workflow.workflow INFO executing verb select
+15:44:57,946 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table join_text_units_to_relationship_ids.parquet
+15:44:58,98 graphrag.index.run INFO Running workflow: create_final_community_reports...
+15:44:58,98 graphrag.index.run INFO dependencies for create_final_community_reports: ['create_final_relationships', 'create_final_nodes']
+15:44:58,98 graphrag.index.run INFO read table from storage: create_final_relationships.parquet
+15:44:58,101 graphrag.index.run INFO read table from storage: create_final_nodes.parquet
+15:44:58,139 datashaper.workflow.workflow INFO executing verb prepare_community_reports_nodes
+15:44:58,172 datashaper.workflow.workflow INFO executing verb prepare_community_reports_edges
+15:44:58,196 datashaper.workflow.workflow INFO executing verb restore_community_hierarchy
+15:44:58,220 datashaper.workflow.workflow INFO executing verb prepare_community_reports
+15:44:58,221 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=2 => 666
+15:44:58,240 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=1 => 666
+15:44:58,383 graphrag.index.verbs.graph.report.prepare_community_reports INFO Number of nodes at level=0 => 666
+15:44:58,459 datashaper.workflow.workflow INFO executing verb create_community_reports
+15:45:35,382 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:45:35,384 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 36.91300000005867. input_tokens=2421, output_tokens=623
+15:45:41,712 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:45:41,713 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 43.25. input_tokens=2913, output_tokens=755
+15:45:48,66 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:45:48,67 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 49.60000000009313. input_tokens=3289, output_tokens=1268
+15:46:17,529 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:17,530 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.413999999989755. input_tokens=2158, output_tokens=490
+15:46:17,922 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:17,923 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.771999999997206. input_tokens=2198, output_tokens=520
+15:46:18,322 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:18,323 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.17000000004191. input_tokens=2128, output_tokens=460
+15:46:19,180 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:19,181 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 31.03599999996368. input_tokens=2087, output_tokens=507
+15:46:20,372 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:20,373 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 32.25399999995716. input_tokens=2831, output_tokens=812
+15:46:21,869 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:21,870 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.70499999995809. input_tokens=2303, output_tokens=529
+15:46:22,576 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:22,577 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 34.46799999999348. input_tokens=2387, output_tokens=564
+15:46:23,366 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:23,367 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 35.23100000002887. input_tokens=2617, output_tokens=601
+15:46:23,448 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:23,449 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 35.3070000000298. input_tokens=2243, output_tokens=551
+15:46:23,557 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:23,558 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 35.45400000002701. input_tokens=2557, output_tokens=586
+15:46:24,48 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:24,49 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 35.925000000046566. input_tokens=2170, output_tokens=627
+15:46:24,356 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:24,357 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 36.2170000000624. input_tokens=2189, output_tokens=597
+15:46:25,162 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:25,163 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 36.98999999999069. input_tokens=2362, output_tokens=1002
+15:46:26,45 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:26,46 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 37.89000000001397. input_tokens=2396, output_tokens=609
+15:46:26,198 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:26,199 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 38.09299999999348. input_tokens=2267, output_tokens=609
+15:46:27,51 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:27,52 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 38.89000000001397. input_tokens=2702, output_tokens=617
+15:46:27,111 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:27,112 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 38.99099999992177. input_tokens=2334, output_tokens=600
+15:46:28,273 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:28,274 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 40.146999999997206. input_tokens=2751, output_tokens=978
+15:46:29,229 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:29,230 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 41.09699999995064. input_tokens=2517, output_tokens=682
+15:46:30,293 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:30,294 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 42.14599999994971. input_tokens=2911, output_tokens=1007
+15:46:30,709 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:30,710 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 42.59799999999814. input_tokens=2501, output_tokens=669
+15:46:32,17 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:32,18 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 43.849000000045635. input_tokens=2911, output_tokens=748
+15:46:33,814 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:33,815 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 45.64399999997113. input_tokens=2541, output_tokens=748
+15:46:34,926 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:34,927 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 46.76800000004005. input_tokens=2642, output_tokens=750
+15:46:36,304 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:36,305 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 48.17499999993015. input_tokens=2813, output_tokens=770
+15:46:45,134 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:45,135 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 27.604999999981374. input_tokens=2178, output_tokens=464
+15:46:45,707 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:45,708 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 27.385000000009313. input_tokens=2138, output_tokens=448
+15:46:46,717 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:46,718 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 27.537000000011176. input_tokens=2130, output_tokens=463
+15:46:49,677 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:49,678 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.304999999934807. input_tokens=2216, output_tokens=453
+15:46:50,536 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:50,537 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 22.261999999987893. input_tokens=2184, output_tokens=600
+15:46:52,164 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:52,165 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.29500000004191. input_tokens=2160, output_tokens=497
+15:46:53,290 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:53,291 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.73300000000745. input_tokens=2214, output_tokens=498
+15:46:55,52 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:55,54 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 31.68599999998696. input_tokens=2225, output_tokens=578
+15:46:55,755 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:55,756 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.59299999999348. input_tokens=2554, output_tokens=525
+15:46:59,775 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:46:59,776 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 29.06499999994412. input_tokens=2392, output_tokens=507
+15:47:00,526 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:00,527 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 34.478999999933876. input_tokens=2260, output_tokens=576
+15:47:00,689 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:00,690 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 37.239000000059605. input_tokens=2724, output_tokens=625
+15:47:01,338 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:01,339 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 43.41600000008475. input_tokens=3336, output_tokens=756
+15:47:01,443 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:01,444 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 34.33100000000559. input_tokens=2315, output_tokens=591
+15:47:03,13 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:03,15 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.7839999999851. input_tokens=2347, output_tokens=596
+15:47:03,363 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:03,364 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 39.006000000052154. input_tokens=2455, output_tokens=677
+15:47:03,822 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:03,823 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 41.24600000004284. input_tokens=2451, output_tokens=728
+15:47:04,639 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:04,640 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 40.5910000000149. input_tokens=3604, output_tokens=687
+15:47:04,677 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:04,678 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.863000000012107. input_tokens=2370, output_tokens=526
+15:47:08,799 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:08,800 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 33.87200000009034. input_tokens=2877, output_tokens=608
+15:47:08,991 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:08,992 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 41.93900000001304. input_tokens=2802, output_tokens=742
+15:47:11,302 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:11,303 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 39.28499999991618. input_tokens=2249, output_tokens=670
+15:47:12,643 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:12,645 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 46.44499999994878. input_tokens=2638, output_tokens=814
+15:47:16,440 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:16,441 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 46.146999999997206. input_tokens=2955, output_tokens=803
+15:47:20,321 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:20,322 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 30.644000000087544. input_tokens=2356, output_tokens=550
+15:47:22,312 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:22,313 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 46.008000000030734. input_tokens=2787, output_tokens=807
+15:47:24,863 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:24,864 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 39.154999999911524. input_tokens=2927, output_tokens=1043
+15:47:26,800 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:26,801 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 41.665999999968335. input_tokens=4449, output_tokens=1075
+15:47:28,68 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:47:28,69 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 41.351000000024214. input_tokens=3890, output_tokens=750
+15:48:07,270 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:07,271 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 39.15399999998044. input_tokens=7388, output_tokens=691
+15:48:08,15 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:08,16 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 39.913999999989755. input_tokens=2601, output_tokens=726
+15:48:08,619 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:08,620 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 40.48199999995995. input_tokens=3116, output_tokens=690
+15:48:09,739 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:09,740 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 41.64199999999255. input_tokens=3774, output_tokens=659
+15:48:09,793 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:09,794 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 41.64599999994971. input_tokens=2966, output_tokens=719
+15:48:10,608 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:10,609 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 42.48499999998603. input_tokens=3233, output_tokens=676
+15:48:12,472 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:12,474 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 44.34499999997206. input_tokens=4113, output_tokens=761
+15:48:13,725 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:13,726 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 45.595000000088476. input_tokens=4405, output_tokens=797
+15:48:15,202 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:15,203 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 47.069000000017695. input_tokens=3476, output_tokens=763
+15:48:15,702 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:15,703 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 47.58099999988917. input_tokens=4086, output_tokens=809
+15:48:19,448 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:19,449 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 51.34299999999348. input_tokens=6213, output_tokens=884
+15:48:20,808 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:20,809 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 52.66700000001583. input_tokens=4070, output_tokens=860
+15:48:21,510 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:21,511 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 53.36599999992177. input_tokens=4066, output_tokens=876
+15:48:23,537 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:23,538 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 55.429000000003725. input_tokens=3936, output_tokens=949
+15:48:24,439 httpx INFO HTTP Request: POST https://api.agicto.cn/v1/chat/completions "HTTP/1.1 200 OK"
+15:48:24,440 graphrag.llm.base.rate_limiting_llm INFO perf - llm.chat "create_community_report" with 0 retries took 56.32699999993201. input_tokens=3908, output_tokens=953
+15:48:24,478 datashaper.workflow.workflow INFO executing verb window
+15:48:24,480 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_community_reports.parquet
+15:48:24,650 graphrag.index.run INFO Running workflow: create_final_text_units...
+15:48:24,650 graphrag.index.run INFO dependencies for create_final_text_units: ['join_text_units_to_relationship_ids', 'create_base_text_units', 'join_text_units_to_entity_ids']
+15:48:24,650 graphrag.index.run INFO read table from storage: join_text_units_to_relationship_ids.parquet
+15:48:24,653 graphrag.index.run INFO read table from storage: create_base_text_units.parquet
+15:48:24,656 graphrag.index.run INFO read table from storage: join_text_units_to_entity_ids.parquet
+15:48:24,696 datashaper.workflow.workflow INFO executing verb select
+15:48:24,716 datashaper.workflow.workflow INFO executing verb rename
+15:48:24,736 datashaper.workflow.workflow INFO executing verb join
+15:48:24,760 datashaper.workflow.workflow INFO executing verb join
+15:48:24,804 datashaper.workflow.workflow INFO executing verb aggregate_override
+15:48:24,826 datashaper.workflow.workflow INFO executing verb select
+15:48:24,827 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_text_units.parquet
+15:48:24,988 graphrag.index.run INFO Running workflow: create_base_documents...
+15:48:24,988 graphrag.index.run INFO dependencies for create_base_documents: ['create_final_text_units']
+15:48:24,988 graphrag.index.run INFO read table from storage: create_final_text_units.parquet
+15:48:25,32 datashaper.workflow.workflow INFO executing verb unroll
+15:48:25,54 datashaper.workflow.workflow INFO executing verb select
+15:48:25,75 datashaper.workflow.workflow INFO executing verb rename
+15:48:25,96 datashaper.workflow.workflow INFO executing verb join
+15:48:25,121 datashaper.workflow.workflow INFO executing verb aggregate_override
+15:48:25,144 datashaper.workflow.workflow INFO executing verb join
+15:48:25,169 datashaper.workflow.workflow INFO executing verb rename
+15:48:25,191 datashaper.workflow.workflow INFO executing verb convert
+15:48:25,215 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_documents.parquet
+15:48:25,371 graphrag.index.run INFO Running workflow: create_final_documents...
+15:48:25,371 graphrag.index.run INFO dependencies for create_final_documents: ['create_base_documents']
+15:48:25,371 graphrag.index.run INFO read table from storage: create_base_documents.parquet
+15:48:25,418 datashaper.workflow.workflow INFO executing verb rename
+15:48:25,420 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_final_documents.parquet
